@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UruVada Innovations - Empowering Farmers Across India</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom CSS Variables */
+        :root {
+            --uruvada-green: #228B22;
+            --uruvada-blue: #0077B6;
+            --uruvada-beige: #FAF8F5;
+            --uruvada-terracotta: #D96C28;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        p, body {
+            font-family: 'Lato', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Merriweather', serif;
+        }
+
+        /* Custom animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll indicator animation */
+        @keyframes scroll-bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        .scroll-indicator {
+            animation: scroll-bounce 2s infinite;
+        }
+
+        /* Mobile menu slide animation */
+        .mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        /* Hero parallax effect */
+        .hero-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+
+        /* Custom button hover effects */
+        .btn-primary {
+            background: var(--uruvada-green);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #1a6b1a;
+            transform: scale(1.05);
+        }
+
+        /* Story card hover effects */
+        .story-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                        <!-- Sprout Icon SVG -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21l3-9 3 9m-6-9h6m-6 0V9a9 9 0 119 9v3"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 id="logo-text" class="text-xl transition-colors duration-300 text-white">
+                            UruVada Innovations
+                        </h1>
+                        <p id="logo-subtitle" class="text-xs transition-colors duration-300 text-white/80">
+                            Empowering Farmers
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <button onclick="scrollToSection('stories')" id="nav-stories" class="transition-colors duration-300 hover:text-green-600 text-white">
+                        Stories
+                    </button>
+                    <button onclick="scrollToSection('solution')" id="nav-mission" class="transition-colors duration-300 hover:text-green-600 text-white">
+                        Our Mission
+                    </button>
+                    <button onclick="scrollToSection('ideas')" id="nav-ideas" class="transition-colors duration-300 hover:text-green-600 text-white">
+                        Share Ideas
+                    </button>
+                    <button onclick="scrollToSection('founders')" id="nav-founders" class="transition-colors duration-300 hover:text-green-600 text-white">
+                        Founders
+                    </button>
+                    <button onclick="scrollToSection('ideas')" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full transition-colors duration-300">
+                        Share Your Idea
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 transition-colors duration-300 text-white">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-md shadow-lg rounded-2xl mt-2 p-6 mobile-menu">
+                <nav class="flex flex-col space-y-4">
+                    <button onclick="scrollToSection('stories'); toggleMobileMenu();" class="text-gray-700 hover:text-green-600 text-left transition-colors duration-300">
+                        Stories
+                    </button>
+                    <button onclick="scrollToSection('solution'); toggleMobileMenu();" class="text-gray-700 hover:text-green-600 text-left transition-colors duration-300">
+                        Our Mission
+                    </button>
+                    <button onclick="scrollToSection('ideas'); toggleMobileMenu();" class="text-gray-700 hover:text-green-600 text-left transition-colors duration-300">
+                        Share Ideas
+                    </button>
+                    <button onclick="scrollToSection('founders'); toggleMobileMenu();" class="text-gray-700 hover:text-green-600 text-left transition-colors duration-300">
+                        Founders
+                    </button>
+                    <button onclick="scrollToSection('ideas'); toggleMobileMenu();" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full transition-colors duration-300 text-center">
+                        Share Your Idea
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-bg" style="background-image: url('https://images.unsplash.com/photo-1751214968949-34ffa0650745?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYXJtZXIlMjBzdW5yaXNlJTIwZmllbGRzJTIwd2Fsa2luZ3xlbnwxfHx8fDE3NTk0NzM5OTF8MA&ixlib=rb-4.1.0&q=80&w=1080')">
+            <!-- Overlays -->
+            <div class="absolute inset-0 bg-gradient-to-r from-amber-900/60 via-orange-800/40 to-yellow-600/30"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-amber-900/50"></div>
+
+            <!-- Content -->
+            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white fade-in">
+                <h1 class="text-4xl md:text-6xl mb-8 leading-tight font-medium">
+                    For many farmers in India, the cycle of debt begins even before the crop is sown.
+                </h1>
+                
+                <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed opacity-90">
+                    Behind every harvest lies a story of resilience, hope, and the unwavering spirit of those who feed our nation. 
+                    It's time to break the cycle and build a future where farming is sustainable, dignified, and prosperous.
+                </p>
+
+                <button onclick="scrollToSection('stories')" class="btn-primary text-white px-8 py-4 text-lg rounded-full shadow-lg">
+                    Meet Our Farmers
+                </button>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 text-white scroll-indicator">
+                <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stories Section -->
+        <section id="stories" class="relative">
+            <!-- Section Header -->
+            <div class="bg-gradient-to-b from-amber-50 to-white py-20">
+                <div class="max-w-4xl mx-auto text-center px-6 fade-in">
+                    <h2 class="text-4xl md:text-5xl text-gray-800 mb-8">
+                        Stories of Hope — Real Farmers, Real India
+                    </h2>
+                    <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                        Behind every acre of land lies a story — not of poverty, but of perseverance. 
+                        These are the people who inspire UruVada — ordinary farmers with extraordinary resilience.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sesai's Story -->
+            <div class="min-h-screen flex items-center bg-gradient-to-br from-amber-50 to-orange-50">
+                <div class="max-w-7xl mx-auto px-6 py-20">
+                    <div class="grid md:grid-cols-2 gap-12 items-center story-card">
+                        <div class="space-y-8 fade-in">
+                            <h3 class="text-3xl md:text-4xl text-gray-800 mb-6">Sesai's Story</h3>
+                            
+                            <div class="prose prose-lg max-w-none">
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    In a small village in Andhra Pradesh lives Sesai, a 50-year-old farmer who has spent his life working the soil that barely feeds his family of four.
+                                </p>
+                                
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    For years, the land he cultivated wasn't even registered in his name — meaning he couldn't get government support or apply for low-interest loans. Yet, every season, he leases small patches of land, borrowing at high interest just to grow his crops.
+                                </p>
+                                
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    His son, a B.Sc. graduate, stays home without job opportunities. Still, Sesai continues to work before sunrise, holding onto faith that one good harvest will change everything.
+                                </p>
+                                
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    His story isn't about failure — it's about perseverance, dignity, and hope.
+                                </p>
+                            </div>
+
+                            <blockquote class="border-l-4 border-orange-600 pl-6 py-4 bg-white/50 rounded-r-lg">
+                                <p class="italic text-lg text-gray-800 font-serif">"I still hope the next crop will change our life."</p>
+                            </blockquote>
+                        </div>
+
+                        <div class="order-first md:order-last fade-in">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1656070487177-8e19a04cf426?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYXJtZXIlMjBwb3J0cmFpdCUyMGVsZGVybHl8ZW58MXx8fHwxNzU5NDczOTkyfDA&ixlib=rb-4.1.0&q=80&w=1080" 
+                                     alt="Portrait of an elderly Indian farmer" 
+                                     class="w-full h-96 md:h-[500px] object-cover rounded-2xl shadow-xl">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Young Farmers' Story -->
+            <div class="min-h-screen flex items-center bg-gradient-to-br from-emerald-50 to-blue-50">
+                <div class="max-w-7xl mx-auto px-6 py-20">
+                    <div class="grid md:grid-cols-2 gap-12 items-center story-card">
+                        <div class="space-y-8 fade-in">
+                            <h3 class="text-3xl md:text-4xl text-gray-800 mb-6">Manoj, Venkat, and Kranthi's Story</h3>
+                            
+                            <div class="prose prose-lg max-w-none">
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    Manoj, Venkat, and Kranthi are in their mid-20s — diploma and engineering graduates who returned to farming when job opportunities fell short.
+                                </p>
+                                
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    They are digitally aware, active in WhatsApp farming groups, and watch YouTube videos to learn about crops and prices. Yet, despite their awareness, they hesitate to use new technologies like drones or subsidy-linked mechanization programs.
+                                </p>
+                                
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    Their story reflects a new generation of farmers — educated, connected, but still caught between tradition and transformation. They want to innovate but need the right support, tools, and trust to move forward.
+                                </p>
+                                
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    They represent the future of Indian agriculture — one that learns from the past and looks forward to a smarter, more confident tomorrow.
+                                </p>
+                            </div>
+
+                            <blockquote class="border-l-4 border-blue-600 pl-6 py-4 bg-white/50 rounded-r-lg">
+                                <p class="italic text-lg text-gray-800 font-serif">"We know what can change farming — but not how to make it reach us."</p>
+                            </blockquote>
+                        </div>
+
+                        <div class="order-first md:order-last fade-in">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1643474004250-05d73e1473e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHx5b3VuZyUyMGluZGlhbiUyMGZhcm1lcnMlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc1OTQ3Mzk5Mnww&ixlib=rb-4.1.0&q=80&w=1080" 
+                                     alt="Young Indian farmers with technology" 
+                                     class="w-full h-96 md:h-[500px] object-cover rounded-2xl shadow-xl">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section id="solution" class="bg-gradient-to-b from-white to-amber-50 py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Header -->
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl text-gray-800 mb-8">
+                        Turning Struggles Into Strength.<br />
+                        Turning Hope Into Action.
+                    </h2>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Content -->
+                    <div class="space-y-8 fade-in">
+                        <div class="prose prose-lg max-w-none">
+                            <p class="text-gray-700 leading-relaxed mb-8">
+                                At UruVada Innovations, we see farmers like Sesai, Manoj, Kranthi, and Venkatesh not as beneficiaries — but as <strong>partners in India's growth</strong>.
+                            </p>
+                            
+                            <p class="text-gray-700 leading-relaxed mb-8">
+                                Our goal is to ensure that every farmer — no matter their background or size of land — has access to information, opportunities, and support that can transform their lives.
+                            </p>
+
+                            <p class="text-gray-700 leading-relaxed mb-12">
+                                Through initiatives like the <strong>Jama App</strong> and local partnerships, UruVada will help farmers:
+                            </p>
+                        </div>
+
+                        <!-- Solutions Grid -->
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                                <div class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg text-gray-800 mb-2">Access government schemes and subsidies easily</h4>
+                                    <p class="text-gray-600 leading-relaxed">Simple, language-friendly interfaces that connect farmers directly to available government support and funding opportunities.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                                <div class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21l3-9 3 9m-6-9h6m-6 0V9a9 9 0 119 9v3"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg text-gray-800 mb-2">Learn from regional-language advisories</h4>
+                                    <p class="text-gray-600 leading-relaxed">Weather updates, crop guidance, and market insights delivered in local languages that farmers understand and trust.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                                <div class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg text-gray-800 mb-2">Manage farm finances confidently</h4>
+                                    <p class="text-gray-600 leading-relaxed">Tools to track expenses, plan investments, and make informed financial decisions for sustainable farming operations.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                                <div class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg text-gray-800 mb-2">Discover new income opportunities</h4>
+                                    <p class="text-gray-600 leading-relaxed">Explore allied sectors like animal husbandry, solar farming, and value-added agriculture to diversify income streams.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-600/10 p-8 rounded-2xl border-l-4 border-green-600">
+                            <p class="text-lg text-gray-800 leading-relaxed">
+                                <strong>Because when farmers grow stronger, villages prosper — and when villages prosper, India moves forward.</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="relative fade-in">
+                        <img src="https://images.unsplash.com/photo-1707721690544-781fe6ede937?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBhZ3JpY3VsdHVyZSUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzU5NDczOTkzfDA&ixlib=rb-4.1.0&q=80&w=1080" 
+                             alt="Indian agriculture technology and innovation" 
+                             class="w-full h-96 md:h-[600px] object-cover rounded-2xl shadow-xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-green-600/20 to-transparent rounded-2xl"></div>
+                        
+                        <!-- Floating stats/badges -->
+                        <div class="absolute top-8 left-8 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-lg flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1758786977080-a5e60a3f843c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTk2NjM2Njl8MA&ixlib=rb-4.1.0&q=80&w=1080" 
+                                     alt="Jama App interface" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <div class="text-lg text-green-600 font-medium mb-1">Jama App</div>
+                                <div class="text-xs text-gray-600">for farmers</div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-8 right-8 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg">
+                            <div class="text-2xl text-blue-600 mb-1">Technology</div>
+                            <div class="text-sm text-gray-600">for Everyone</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Idea Submission Section -->
+        <section id="ideas" class="bg-gradient-to-br from-green-600/5 via-amber-50 to-blue-600/5 py-20">
+            <div class="max-w-5xl mx-auto px-6">
+                <!-- Header -->
+                <div class="text-center mb-12 fade-in">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-green-600 rounded-full mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-5xl text-gray-800 mb-6">
+                        What Would You Like to See?
+                    </h2>
+                    
+                    <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-8">
+                        Your voice matters. Tell us what tools, features, or solutions would make the biggest difference 
+                        in your farming journey. Together, we can build exactly what farmers need.
+                    </p>
+                    
+                    <!-- Feature highlights -->
+                    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+                        <div class="flex flex-col items-center p-6 bg-white/70 rounded-xl">
+                            <svg class="w-8 h-8 text-green-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                            <h3 class="text-lg mb-2">Community Driven</h3>
+                            <p class="text-sm text-gray-600 text-center">Built by farmers, for farmers</p>
+                        </div>
+                        
+                        <div class="flex flex-col items-center p-6 bg-white/70 rounded-xl">
+                            <svg class="w-8 h-8 text-blue-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                            </svg>
+                            <h3 class="text-lg mb-2">Your Ideas Matter</h3>
+                            <p class="text-sm text-gray-600 text-center">Every suggestion is carefully considered</p>
+                        </div>
+                        
+                        <div class="flex flex-col items-center p-6 bg-white/70 rounded-xl">
+                            <svg class="w-8 h-8 text-orange-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                            <h3 class="text-lg mb-2">Real Solutions</h3>
+                            <p class="text-sm text-gray-600 text-center">We build what you actually need</p>
+                        </div>
+                    </div>
+                </div>
+
+               
+
+        <!-- Founders Section -->
+        <section id="founders" class="bg-gradient-to-b from-amber-50 to-white py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <!-- Header -->
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl text-gray-800 mb-8">
+                        Meet the Founders
+                    </h2>
+                    <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                        Led by two founders who grew up in farming families and understand the struggles firsthand.
+                    </p>
+                </div>
+
+                <!-- Founders Grid -->
+                <div class="grid md:grid-cols-2 gap-8 fade-in">
+                    <!-- Mohan Kantamaneni -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-blue-600 rounded-full flex items-center justify-center text-white mr-4">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl text-gray-800 mb-1">Mohan Kantamaneni</h3>
+                                <p class="text-green-600 text-sm uppercase tracking-wide">Co-Founder</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Born into a farming family, Mohan knows the uncertainty and resilience behind every harvest. After earning an MBA in the U.S. and working there until 2024, he returned to India to be close to his roots and dedicate himself to projects that strengthen rural communities.
+                        </p>
+                        
+                        <div class="text-sm text-gray-500 bg-gray-50 p-4 rounded-lg">
+                            MBA Graduate • US Professional Experience • Farming Family Background
+                        </div>
+                    </div>
+
+                    <!-- Rama Krishna Sai Ganta -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-blue-600 rounded-full flex items-center justify-center text-white mr-4">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl text-gray-800 mb-1">Rama Krishna Sai Ganta</h3>
+                                <p class="text-green-600 text-sm uppercase tracking-wide">Co-Founder</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Also from a humble village background, Rama Krishna Sai Ganta is a 2024 engineering graduate with a passion for entrepreneurship and technology. He has helped small businesses adopt digital tools and now wants to bring the same transformation to farmers through simple, accessible innovation.
+                        </p>
+                        
+                        <div class="text-sm text-gray-500 bg-gray-50 p-4 rounded-lg">
+                            Engineering Graduate 2024 • Tech Entrepreneur • Village Background
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision Statement -->
+                <div class="mt-16 text-center fade-in">
+                    <div class="bg-gradient-to-r from-green-600/10 to-blue-600/10 p-12 rounded-3xl border border-green-600/20">
+                        <div class="max-w-4xl mx-auto">
+                            <div class="flex justify-center mb-6">
+                                <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl text-gray-800 mb-6">
+                                Our Vision
+                            </h3>
+                            <p class="text-lg text-gray-700 leading-relaxed">
+                                To create a future where every farmer in India has the tools, knowledge, and opportunities 
+                                they need to thrive — not just survive. We believe that by empowering farmers, we strengthen 
+                                the foundation of our nation and honor the hands that feed us all.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact CTA -->
+                <div class="mt-16 text-center fade-in">
+                    <p class="text-gray-600 mb-6">Ready to join us in transforming Indian agriculture?</p>
+                    <div class="space-x-4">
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full transition-colors duration-300">
+                            Partner with Us
+                        </button>
+                        <button class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-full transition-colors duration-300">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- Form Card -->
+                <div class="shadow-xl border-0 bg-white/90 backdrop-blur-sm rounded-lg fade-in">
+                    <div class="text-center pb-6 p-6 border-b">
+                        <h3 class="text-2xl text-gray-800 mb-2">Share Your Idea</h3>
+                        <p class="text-lg text-gray-600">
+                            Whether it's a feature for the Jama App, a new service, or anything else - we want to hear from you!
+                        </p>
+                    </div>
+                    
+                    <div class="p-6">
+                        <form id="ideaForm" class="space-y-6">
+                            <!-- Name Fields -->
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700">
+                                        First Name <span class="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                        id="firstName"
+                                        name="firstName"
+                                        type="text"
+                                        placeholder="Enter your first name"
+                                        required
+                                        class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                                    />
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700">
+                                        Last Name <span class="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                        id="lastName"
+                                        name="lastName"
+                                        type="text"
+                                        placeholder="Enter your last name"
+                                        required
+                                        class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="space-y-2">
+                                <label for="phoneNumber" class="block text-sm font-medium text-gray-700 flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                    Phone Number <span class="text-red-500">*</span>
+                                </label>
+                                <input
+                                    id="phoneNumber"
+                                    name="phoneNumber"
+                                    type="tel"
+                                    placeholder="Enter your phone number (e.g., +91 98765 43210)"
+                                    required
+                                    class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                                />
+                            </div>
+
+                            <!-- Idea -->
+                            <div class="space-y-2">
+                                <label for="idea" class="block text-sm font-medium text-gray-700 flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                    </svg>
+                                    Your Idea <span class="text-red-500">*</span>
+                                </label>
+                                <textarea
+                                    id="idea"
+                                    name="idea"
+                                    placeholder="Describe your idea in detail. What would you like to see in the Jama App or what other tools would help you in farming? Be as specific as possible..."
+                                    required
+                                    rows="6"
+                                    class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent resize-none"
+                                ></textarea>
+                                <p class="text-sm text-gray-500">
+                                    Examples: Weather alerts in Telugu, soil testing booking, market price notifications, crop disease identification, etc.
+                                </p>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="pt-4">
+                                <button 
+                                    type="submit" 
+                                    id="submitBtn"
+                                    class="w-full bg-green-600 hover:bg-green-700 text-white py-4 text-lg rounded-xl shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    Submit Your Idea
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Success Message -->
+                        <div id="successMessage" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <strong>Thank you for your idea!</strong> We'll review your suggestion and get back to you soon.
+                            </div>
+                        </div>
+
+                        <!-- Footer Note -->
+                        <div class="mt-8 p-4 bg-gray-50 rounded-lg text-center">
+                            <p class="text-sm text-gray-600">
+                                🌱 <strong>Your privacy matters:</strong> We'll only use your contact information to follow up on your idea and keep you updated on relevant developments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-12 fade-in">
+                    <p class="text-lg text-gray-600 mb-4">
+                        Have questions or want to connect directly?
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button class="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-6 py-2 rounded-full transition-colors duration-300">
+                            Call Us: +91 98765 43210
+                        </button>
+                        <button class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-2 rounded-full transition-colors duration-300">
+                            Email: ideas@uruvada.com
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl mb-4">UruVada Innovations</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Empowering farmers across India through awareness, technology, and empathy. 
+                        Building bridges between tradition and innovation.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="mb-4">Our Mission</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Farmer Empowerment</li>
+                        <li>Technology Access</li>
+                        <li>Financial Inclusion</li>
+                        <li>Sustainable Agriculture</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="mb-4">Connect</h4>
+                    <p class="text-gray-400 mb-4">
+                        Join us in transforming Indian agriculture, one farmer at a time.
+                    </p>
+                    <div class="space-y-2">
+                        <p class="text-sm text-gray-500">Founded by farming families</p>
+                        <p class="text-sm text-gray-500">Rooted in rural India</p>
+                        <p class="text-sm text-gray-500">Powered by empathy & technology</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 UruVada Innovations Pvt. Ltd. All rights reserved.</p>
+                <p class="text-sm mt-2">Empowering farmers, strengthening communities, building India's future.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        let isMobileMenuOpen = false;
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            isMobileMenuOpen = !isMobileMenuOpen;
+            
+            if (isMobileMenuOpen) {
+                mobileMenu.classList.add('open');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.remove('open');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+
+        // Smooth scrolling to sections
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Header scroll effect
+        function handleScroll() {
+            const header = document.getElementById('header');
+            const logoText = document.getElementById('logo-text');
+            const logoSubtitle = document.getElementById('logo-subtitle');
+            const navItems = ['nav-stories', 'nav-mission', 'nav-ideas', 'nav-founders'];
+            
+            const isScrolled = window.scrollY > 50;
+            
+            if (isScrolled) {
+                header.classList.remove('bg-transparent');
+                header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-gray-800');
+                logoSubtitle.classList.remove('text-white/80');
+                logoSubtitle.classList.add('text-gray-500');
+                
+                navItems.forEach(id => {
+                    const item = document.getElementById(id);
+                    if (item) {
+                        item.classList.remove('text-white');
+                        item.classList.add('text-gray-700');
+                    }
+                });
+            } else {
+                header.classList.add('bg-transparent');
+                header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-gray-800');
+                logoSubtitle.classList.add('text-white/80');
+                logoSubtitle.classList.remove('text-gray-500');
+                
+                navItems.forEach(id => {
+                    const item = document.getElementById(id);
+                    if (item) {
+                        item.classList.add('text-white');
+                        item.classList.remove('text-gray-700');
+                    }
+                });
+            }
+        }
+
+        // Form submission handler
+        function handleFormSubmission() {
+            const form = document.getElementById('ideaForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        Submitting...
+                    </div>
+                `;
+                
+                // Simulate form submission
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Show success message
+                successMessage.classList.remove('hidden');
+                
+                // Reset form
+                form.reset();
+                
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Submit Your Idea';
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 5000);
+            });
+        }
+
+        // Intersection Observer for fade-in animations
+        function setupFadeInAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFadeInAnimation();
+            handleFormSubmission();
+            window.addEventListener('scroll', handleScroll);
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const header = document.getElementById('header');
+                
+                if (isMobileMenuOpen && !header.contains(event.target)) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768 && isMobileMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
