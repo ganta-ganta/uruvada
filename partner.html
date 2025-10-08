@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Opportunity - UruVada Innovations</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom CSS Variables */
+        :root {
+            --uruvada-green: #1a6b1a;
+            --uruvada-blue: #1e40af;
+            --uruvada-beige: #FAF8F5;
+            --uruvada-terracotta: #d97706;
+            --uruvada-dark: #1f2937;
+            --uruvada-light: #f9fafb;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        p, body {
+            font-family: 'Lato', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Merriweather', serif;
+        }
+
+        /* Custom animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Professional card styling */
+        .pro-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .pro-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Feature icon styling */
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        /* Professional text formatting */
+        .pro-text {
+            line-height: 1.7;
+            color: #374151;
+        }
+
+        .pro-heading {
+            color: #1f2937;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Gradient backgrounds */
+        .gradient-primary {
+            background: linear-gradient(135deg, var(--uruvada-green), #0f4f0f);
+        }
+
+        .gradient-secondary {
+            background: linear-gradient(135deg, var(--uruvada-blue), #1e3a8a);
+        }
+
+        .gradient-light {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        }
+
+        /* Investment metrics styling */
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--uruvada-green);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Timeline styling */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--uruvada-green);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--uruvada-green);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--uruvada-green);
+        }
+
+        /* Progress bar styling */
+        .progress-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--uruvada-green), #0f4f0f);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Currency formatting */
+        .inr-currency::before {
+            content: '₹';
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 gradient-primary rounded-full flex items-center justify-center">
+                            <!-- Sprout Icon SVG -->
+                            <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21l3-9 3 9m-6-9h6m-6 0V9a9 9 0 119 9v3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="text-lg sm:text-xl text-gray-800">
+                                UruVada Innovations
+                            </h1>
+                            <p class="text-xs text-gray-500">
+                                Empowering Farmers
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="transition-colors duration-300 hover:text-green-600 text-gray-700 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        Home
+                    </a>
+                    <a href="#opportunity" class="transition-colors duration-300 hover:text-green-600 text-gray-700 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                        Opportunity
+                    </a>
+                    <a href="#business-model" class="transition-colors duration-300 hover:text-green-600 text-gray-700 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        Business Model
+                    </a>
+                    <a href="#investment" class="transition-colors duration-300 hover:text-green-600 text-gray-700 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Investment
+                    </a>
+                    <a href="#contact" class="gradient-primary hover:opacity-90 text-white px-4 py-2 sm:px-6 sm:py-2 rounded-full transition-all duration-300 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        Contact Us
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 transition-colors duration-300 text-gray-700">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden fixed inset-0 z-40 bg-white transform -translate-x-full transition-transform duration-300">
+        <div class="flex flex-col h-full">
+            <!-- Mobile Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 gradient-primary rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21l3-9 3 9m-6-9h6m-6 0V9a9 9 0 119 9v3"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg text-gray-800">UruVada Innovations</h1>
+                        <p class="text-xs text-gray-500">Empowering Farmers</p>
+                    </div>
+                </div>
+                <button onclick="toggleMobileMenu()" class="p-2">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Links -->
+            <nav class="flex-1 p-4 space-y-4">
+                <a href="index.html" onclick="toggleMobileMenu()" class="w-full flex items-center space-x-3 p-3 text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg transition-colors duration-300 text-left">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span>Home</span>
+                </a>
+                
+                <a href="#opportunity" onclick="toggleMobileMenu()" class="w-full flex items-center space-x-3 p-3 text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg transition-colors duration-300 text-left">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    </svg>
+                    <span>Opportunity</span>
+                </a>
+                
+                <a href="#business-model" onclick="toggleMobileMenu()" class="w-full flex items-center space-x-3 p-3 text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg transition-colors duration-300 text-left">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    <span>Business Model</span>
+                </a>
+                
+                <a href="#investment" onclick="toggleMobileMenu()" class="w-full flex items-center space-x-3 p-3 text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg transition-colors duration-300 text-left">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Investment</span>
+                </a>
+                
+                <a href="#contact" onclick="toggleMobileMenu()" class="w-full flex items-center space-x-3 p-3 gradient-primary text-white hover:opacity-90 rounded-lg transition-all duration-300 text-left">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    <span>Contact Us</span>
+                </a>
+            </nav>
+
+            <!-- Mobile Footer -->
+            <div class="p-4 border-t border-gray-200">
+                <p class="text-xs text-gray-500 text-center">
+                    Empowering farmers, strengthening communities
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative py-16 sm:py-24 bg-gradient-to-br from-green-50 to-amber-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center fade-in">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-800 mb-6 pro-heading">
+                        Invest in the Future of <span class="text-green-600">Indian Agriculture</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 pro-text">
+                        Join UruVada Innovations in transforming the lives of 150 million Indian farmers through technology, empowerment, and sustainable growth.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#investment" class="gradient-primary hover:opacity-90 text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full shadow-lg transition-all duration-300 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                            View Investment Details
+                        </a>
+                        <a href="#contact" class="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full transition-colors duration-300 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            Schedule a Call
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Metrics Section -->
+        <section class="py-12 sm:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="grid md:grid-cols-4 gap-6 sm:gap-8">
+                    <div class="metric-card text-center">
+                        <div class="text-3xl sm:text-4xl font-bold text-green-600 mb-2">150M+</div>
+                        <div class="text-gray-600 pro-text">Farmers in India</div>
+                    </div>
+                    <div class="metric-card text-center">
+                        <div class="text-3xl sm:text-4xl font-bold text-green-600 mb-2 inr-currency">33L Cr+</div>
+                        <div class="text-gray-600 pro-text">Agricultural Market</div>
+                    </div>
+                    <div class="metric-card text-center">
+                        <div class="text-3xl sm:text-4xl font-bold text-green-600 mb-2">70%</div>
+                        <div class="text-gray-600 pro-text">Rural Population</div>
+                    </div>
+                    <div class="metric-card text-center">
+                        <div class="text-3xl sm:text-4xl font-bold text-green-600 mb-2">15%</div>
+                        <div class="text-gray-600 pro-text">Of India's GDP</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Opportunity Section -->
+        <section id="opportunity" class="py-12 sm:py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16 fade-in">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl text-gray-800 mb-6 pro-heading">
+                        The Opportunity: Transforming Indian Agriculture
+                    </h2>
+                    <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto pro-text">
+                        Indian agriculture is at a tipping point. With 150 million farmers contributing to 15% of GDP, 
+                        the sector is ripe for technological disruption that can create immense value while solving critical social challenges.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 sm:gap-12">
+                    <div class="pro-card p-6 sm:p-8 fade-in">
+                        <div class="feature-icon bg-green-100">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl text-gray-800 mb-4 pro-heading">Massive Market Gap</h3>
+                        <ul class="space-y-3 pro-text">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Limited digital access for 85% of smallholder farmers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Inefficient supply chains causing 30-40% post-harvest losses</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Limited access to formal credit and insurance</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Fragmented market with limited price transparency</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pro-card p-6 sm:p-8 fade-in">
+                        <div class="feature-icon bg-blue-100">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl text-gray-800 mb-4 pro-heading">Our Solution</h3>
+                        <ul class="space-y-3 pro-text">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span><strong>Jama App</strong> - Digital platform for farmers in local languages</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Market linkage connecting farmers directly to buyers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Access to credit, insurance, and government schemes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Data-driven insights for better crop planning</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Model Section -->
+        <section id="business-model" class="py-12 sm:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16 fade-in">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl text-gray-800 mb-6 pro-heading">
+                        Sustainable Business Model
+                    </h2>
+                    <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto pro-text">
+                        Our multi-pronged revenue approach ensures sustainable growth while creating maximum impact for farmers.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 sm:gap-12">
+                    <div class="pro-card p-6 sm:p-8 text-center fade-in">
+                        <div class="feature-icon bg-amber-100 mx-auto">
+                            <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl text-gray-800 mb-4 pro-heading">Transaction Fees</h3>
+                        <p class="text-gray-600 mb-4 pro-text">
+                            Small commission on marketplace transactions between farmers and buyers.
+                        </p>
+                        <div class="text-green-600 font-semibold">Projected: 40% of revenue</div>
+                    </div>
+
+                    <div class="pro-card p-6 sm:p-8 text-center fade-in">
+                        <div class="feature-icon bg-green-100 mx-auto">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl text-gray-800 mb-4 pro-heading">Premium Subscriptions</h3>
+                        <p class="text-gray-600 mb-4 pro-text">
+                            Advanced features for serious farmers including detailed analytics and premium support.
+                        </p>
+                        <div class="text-green-600 font-semibold">Projected: 25% of revenue</div>
+                    </div>
+
+                    <div class="pro-card p-6 sm:p-8 text-center fade-in">
+                        <div class="feature-icon bg-blue-100 mx-auto">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl text-gray-800 mb-4 pro-heading">Enterprise Services</h3>
+                        <p class="text-gray-600 mb-4 pro-text">
+                            Data analytics and insights for agribusinesses, insurers, and financial institutions.
+                        </p>
+                        <div class="text-green-600 font-semibold">Projected: 35% of revenue</div>
+                    </div>
+                </div>
+
+                <!-- Revenue Projection -->
+                <div class="mt-16 fade-in">
+                    <div class="pro-card p-6 sm:p-8">
+                        <h3 class="text-xl sm:text-2xl text-gray-800 mb-6 text-center pro-heading">5-Year Revenue Projection (in INR)</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="border-b border-gray-200">
+                                        <th class="py-3 px-4 text-left text-gray-600 font-medium">Year</th>
+                                        <th class="py-3 px-4 text-left text-gray-600 font-medium">Active Farmers</th>
+                                        <th class="py-3 px-4 text-left text-gray-600 font-medium">Gross Merchandise Value</th>
+                                        <th class="py-3 px-4 text-left text-gray-600 font-medium">Projected Revenue</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4">Year 1</td>
+                                        <td class="py-3 px-4">50,000</td>
+                                        <td class="py-3 px-4 inr-currency">41.5 Cr</td>
+                                        <td class="py-3 px-4 inr-currency">2.1 Cr</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4">Year 2</td>
+                                        <td class="py-3 px-4">200,000</td>
+                                        <td class="py-3 px-4 inr-currency">207.5 Cr</td>
+                                        <td class="py-3 px-4 inr-currency">10.4 Cr</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4">Year 3</td>
+                                        <td class="py-3 px-4">500,000</td>
+                                        <td class="py-3 px-4 inr-currency">622.5 Cr</td>
+                                        <td class="py-3 px-4 inr-currency">31.1 Cr</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4">Year 4</td>
+                                        <td class="py-3 px-4">1,000,000</td>
+                                        <td class="py-3 px-4 inr-currency">1,660 Cr</td>
+                                        <td class="py-3 px-4 inr-currency">83 Cr</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4">Year 5</td>
+                                        <td class="py-3 px-4">2,000,000</td>
+                                        <td class="py-3 px-4 inr-currency">4,150 Cr</td>
+                                        <td class="py-3 px-4 inr-currency">207.5 Cr</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4 text-center">*Based on exchange rate: 1 USD = 83 INR</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Section -->
+        <section id="investment" class="py-12 sm:py-20 bg-gradient-to-br from-green-50 to-blue-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16 fade-in">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl text-gray-800 mb-6 pro-heading">
+                        Investment Opportunity
+                    </h2>
+                    <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto pro-text">
+                        We're seeking strategic partners to join us in building the future of Indian agriculture.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12 sm:gap-16">
+                    <div class="fade-in">
+                        <div class="pro-card p-6 sm:p-8 mb-8">
+                            <h3 class="text-xl sm:text-2xl text-gray-800 mb-6 pro-heading">Funding Round Details</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="text-gray-600">Round</span>
+                                    <span class="font-semibold">Seed Round</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="text-gray-600">Amount</span>
+                                    <span class="font-semibold inr-currency">4.15 Cr</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="text-gray-600">Valuation</span>
+                                    <span class="font-semibold inr-currency">24.9 Cr Pre-money</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="text-gray-600">Minimum Investment</span>
+                                    <span class="font-semibold inr-currency">20.75 L</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Use of Funds</span>
+                                    <span class="font-semibold">See Breakdown</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pro-card p-6 sm:p-8">
+                            <h3 class="text-xl sm:text-2xl text-gray-800 mb-6 pro-heading">Use of Funds</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-600">Product Development</span>
+                                        <span class="text-gray-600">40%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-600">Market Expansion</span>
+                                        <span class="text-gray-600">30%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-600">Team Building</span>
+                                        <span class="text-gray-600">20%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-600">Operational Costs</span>
+                                        <span class="text-gray-600">10%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in">
+                        <div class="pro-card p-6 sm:p-8">
+                            <h3 class="text-xl sm:text-2xl text-gray-800 mb-6 pro-heading">Roadmap & Milestones</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <h4 class="font-semibold text-gray-800 mb-1">Q3 2024 - Product Launch</h4>
+                                    <p class="text-gray-600 text-sm">Launch Jama App MVP in Andhra Pradesh & Telangana</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-semibold text-gray-800 mb-1">Q4 2024 - User Growth</h4>
+                                    <p class="text-gray-600 text-sm">Reach 10,000 active farmers on the platform</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-semibold text-gray-800 mb-1">Q1 2025 - Revenue Generation</h4>
+                                    <p class="text-gray-600 text-sm">Implement transaction fees and premium features</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-semibold text-gray-800 mb-1">Q3 2025 - Series A Preparation</h4>
+                                    <p class="text-gray-600 text-sm">Expand to 3 new states and reach 100,000 farmers</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-semibold text-gray-800 mb-1">Q1 2026 - Series A Round</h4>
+                                    <p class="text-gray-600 text-sm">Target <span class="inr-currency">24.9 Cr</span> funding for pan-India expansion</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pro-card p-6 sm:p-8 mt-8">
+                            <h3 class="text-xl sm:text-2xl text-gray-800 mb-4 pro-heading">Why Invest in UruVada?</h3>
+                            <ul class="space-y-3 pro-text">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span><strong>Massive Market:</strong> <span class="inr-currency">33L Cr+</span> agricultural sector with limited tech penetration</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span><strong>Proven Team:</strong> Founders with farming backgrounds and relevant expertise</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span><strong>Scalable Solution:</strong> Technology platform with multiple revenue streams</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span><strong>Social Impact:</strong> Creating meaningful change for 150M+ farmers</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-12 sm:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16 fade-in">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl text-gray-800 mb-6 pro-heading">
+                        Our Leadership Team
+                    </h2>
+                    <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto pro-text">
+                        Experienced founders with deep understanding of both agriculture and technology.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto">
+                    <div class="pro-card p-6 sm:p-8 text-center fade-in">
+                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-green-600">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBidXNpbmVzcyUyMG1hbiUyMHNtaWxpbmd8ZW58MXx8fHwxNzU5NDc0MjM0fDA&ixlib=rb-4.1.0&q=80&w=400" 
+                                 alt="Mohan Kantamaneni" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Mohan Kantamaneni</h3>
+                        <p class="text-green-600 mb-3">Co-Founder & CEO</p>
+                        <p class="text-gray-600 text-sm pro-text">
+                            MBA graduate with US professional experience. Born into a farming family with deep understanding of agricultural challenges.
+                        </p>
+                    </div>
+
+                    <div class="pro-card p-6 sm:p-8 text-center fade-in">
+                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-600">
+                            <img src="img/founder.png" 
+                                 alt="Rama Krishna Sai Ganta" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Rama Krishna Sai Ganta</h3>
+                        <p class="text-blue-600 mb-3">Co-Founder & CTO</p>
+                        <p class="text-gray-600 text-sm pro-text">
+                            2024 engineering graduate with passion for entrepreneurship and technology. Village background with firsthand farming experience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-12 sm:py-20 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16 fade-in">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl text-gray-800 mb-6 pro-heading">
+                        Ready to Invest in Change?
+                    </h2>
+                    <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto pro-text">
+                        Contact us to schedule a meeting, request our pitch deck, or ask any questions about this investment opportunity.
+                    </p>
+                </div>
+
+                <div class="pro-card p-6 sm:p-8 fade-in">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your full name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company / Organization</label>
+                                <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your company name">
+                            </div>
+                            <div>
+                                <label for="investment" class="block text-sm font-medium text-gray-700 mb-2">Potential Investment Range</label>
+                                <select id="investment" name="investment" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
+                                    <option value="">Select range</option>
+                                    <option value="20l-50l">₹20 L - ₹50 L</option>
+                                    <option value="50l-1cr">₹50 L - ₹1 Cr</option>
+                                    <option value="1cr-2cr">₹1 Cr - ₹2 Cr</option>
+                                    <option value="2cr+">₹2 Cr+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Tell us about your interest in UruVada..."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="gradient-primary hover:opacity-90 text-white px-8 py-4 text-lg rounded-lg shadow-lg transition-all duration-300">
+                                Send Inquiry
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="text-center mt-12 fade-in">
+                    <p class="text-gray-600 mb-6 pro-text">Prefer to connect directly?</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="mailto:invest@uruvada.com" class="flex items-center text-gray-600 hover:text-green-600 transition-colors duration-300">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            invest@uruvada.com
+                        </a>
+                        <a href="tel:+919876543210" class="flex items-center text-gray-600 hover:text-green-600 transition-colors duration-300">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            +91 98765 43210
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg sm:text-xl mb-4">UruVada Innovations</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base pro-text">
+                        Empowering farmers across India through awareness, technology, and empathy. 
+                        Building bridges between tradition and innovation.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="mb-4">Our Mission</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
+                        <li>Farmer Empowerment</li>
+                        <li>Technology Access</li>
+                        <li>Financial Inclusion</li>
+                        <li>Sustainable Agriculture</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="mb-4">Connect</h4>
+                    <p class="text-gray-400 mb-4 text-sm sm:text-base pro-text">
+                        Join us in transforming Indian agriculture, one farmer at a time.
+                    </p>
+                    <div class="space-y-1">
+                        <p class="text-xs sm:text-sm text-gray-500">Founded by farming families</p>
+                        <p class="text-xs sm:text-sm text-gray-500">Rooted in rural India</p>
+                        <p class="text-xs sm:text-sm text-gray-500">Powered by empathy & technology</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p class="text-sm sm:text-base">&copy; 2024 UruVada Innovations Pvt. Ltd. All rights reserved.</p>
+                <p class="text-xs sm:text-sm mt-2">Empowering farmers, strengthening communities, building India's future.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        let isMobileMenuOpen = false;
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            isMobileMenuOpen = !isMobileMenuOpen;
+            
+            if (isMobileMenuOpen) {
+                mobileMenu.classList.remove('-translate-x-full');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            } else {
+                mobileMenu.classList.add('-translate-x-full');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        // Smooth scrolling to sections
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Intersection Observer for fade-in animations
+        function setupFadeInAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFadeInAnimation();
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const header = document.getElementById('header');
+                
+                if (isMobileMenuOpen && !header.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768 && isMobileMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
